@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
   private let textLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.text = "Your app content goes here..."
+    label.text = Locale.current.languageCode //"Your app content goes here..."
     label.textAlignment = .center
     label.textColor = .label
     return label
@@ -60,7 +60,26 @@ class MainViewController: UIViewController {
   }
 
   @objc private func credentialsButtonTapped() {
-    // TODO
-    print("credentialsButtonTapped")
+    let localSource: DevCredInfoSource = .local(
+      developer: DevCredDeveloperInfo(
+        name: "Maxim Skryabin",
+        description: "iOS developer",
+        imageUrl: "https://mxm.codes/wp-content/uploads/2022/01/me.jpg"
+      ),
+      projects: [
+        .init(name: "FoodRocket1", description: "FoodRocket – стартап, работающий на территории США, позволяющий пользователям заказывать доставку свежих продуктов, готовых блюд и предметов домашнего обихода", iconUrl: "https://mxm.codes/wp-content/uploads/2022/01/ios_foodrocket_icon-e1643113439817-300x300.png", linkUrl: nil),
+        .init(name: "FoodRocket2", description: "FoodRocket – стартап, работающий на территории США, позволяющий пользователям заказывать доставку свежих продуктов, готовых блюд и предметов домашнего обихода", iconUrl: "https://mxm.codes/wp-content/uploads/2022/01/ios_foodrocket_icon-e1643113439817-300x300.png", linkUrl: nil),
+        .init(name: "FoodRocket3", description: "FoodRocket – стартап, работающий на территории США, позволяющий пользователям заказывать доставку свежих продуктов, готовых блюд и предметов домашнего обихода", iconUrl: "https://mxm.codes/wp-content/uploads/2022/01/ios_foodrocket_icon-e1643113439817-300x300.png", linkUrl: nil)
+      ])
+
+    // https://www.npoint.io/docs/78727e638b2d4a5430cf
+    // https://api.npoint.io/78727e638b2d4a5430cf
+    let remoteSource: DevCredInfoSource = .remote(url: "https://api.npoint.io/78727e638b2d4a5430cf")
+
+    let config = DevCredConfig(
+      infoSource: remoteSource,
+      presentationType: .modal
+    )
+    DevCredRootView.present(config: config, from: self)
   }
 }
