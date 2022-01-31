@@ -88,7 +88,11 @@ public extension DevCredDeveloperInfo {
       case github
 
       var icon: UIImage? {
-        return UIImage(named: "icon_link_\(rawValue)")?.withRenderingMode(.alwaysTemplate)
+        guard let mainBundlePath = Bundle.main.resourcePath,
+              let devCredBundle = Bundle(path: mainBundlePath + "/DevCred_DevCred.bundle"),
+              let iconPath = devCredBundle.path(forResource: "icon_link_\(rawValue)", ofType: "png") else { return nil }
+
+        return UIImage(contentsOfFile: iconPath)?.withRenderingMode(.alwaysTemplate)
       }
     }
 

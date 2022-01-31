@@ -26,7 +26,20 @@ let package = Package(
     .target(
       name: "DevCred",
       dependencies: ["Kingfisher"],
-      path: "Sources/devcred-ios"
+      path: "Sources/devcred-ios",
+      resources: [
+        .process("Images/icon_link_behance.png"),
+        .process("Images/icon_link_dribbble.png"),
+        .process("Images/icon_link_facebook.png"),
+        .process("Images/icon_link_github.png"),
+        .process("Images/icon_link_instagram.png"),
+        .process("Images/icon_link_linkedin.png"),
+        .process("Images/icon_link_telegram.png"),
+        .process("Images/icon_link_twitter.png"),
+        .process("Images/icon_link_vk.png"),
+        .process("Images/icon_link_web.png"),
+        .process("Images/icon_link_youtube.png")
+      ]
     ),
     .testTarget(
       name: "devcredTests",
