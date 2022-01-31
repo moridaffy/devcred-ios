@@ -7,14 +7,14 @@
 
 import UIKit
 
-enum DevCredRootView {
-  static func build(_ config: DevCredConfig) -> Controller {
+public enum DevCredRootView {
+  public static func build(_ config: DevCredConfig) -> Controller {
     let viewModel = Model(config: config)
     let viewController = Controller(viewModel: viewModel)
     return viewController
   }
 
-  static func present(config: DevCredConfig, from presentingViewController: UIViewController) {
+  public static func present(config: DevCredConfig, from presentingViewController: UIViewController) {
     let controller = build(config)
 
     switch config.presentationType {

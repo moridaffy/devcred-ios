@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct DevCredConfig {
+public struct DevCredConfig {
   let infoSource: DevCredInfoSource
 
   let presentationType: PresentationType
@@ -16,7 +16,7 @@ struct DevCredConfig {
   let accentColor: UIColor
   let textColor: UIColor
 
-  init(
+  public init(
     infoSource: DevCredInfoSource,
     presentationType: PresentationType = .modal,
     background: BackgroundType = .color(nil),
@@ -33,12 +33,12 @@ struct DevCredConfig {
   }
 }
 
-enum DevCredInfoSource {
+public enum DevCredInfoSource {
   case local(title: String?, developer: DevCredDeveloperInfo, projects: [DevCredProjectInfo])
   case remote(url: String)
 }
 
-extension DevCredConfig {
+public extension DevCredConfig {
   enum PresentationType {
     case modal
     case push

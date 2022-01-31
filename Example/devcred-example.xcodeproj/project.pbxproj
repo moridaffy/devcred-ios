@@ -7,44 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C286CE627A8115D0029FF34 /* DevCredLinksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C286CE527A8115D0029FF34 /* DevCredLinksCell.swift */; };
-		0C286CE827A83B580029FF34 /* DevCredConfig.Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C286CE727A83B580029FF34 /* DevCredConfig.Remote.swift */; };
-		0C286CEB27A83C790029FF34 /* Locale+CurrentLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C286CEA27A83C790029FF34 /* Locale+CurrentLanguage.swift */; };
-		0C286CED27A83CA10029FF34 /* UITableView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C286CEC27A83CA10029FF34 /* UITableView+Dequeue.swift */; };
-		0C286CEF27A83E7F0029FF34 /* Decodable+LocalizedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C286CEE27A83E7F0029FF34 /* Decodable+LocalizedValue.swift */; };
+		0C34835227A8541E0077ACA5 /* DevCred in Frameworks */ = {isa = PBXBuildFile; productRef = 0C34835127A8541E0077ACA5 /* DevCred */; };
 		0CE2B8E527A58683006164F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B8E427A58683006164F6 /* AppDelegate.swift */; };
 		0CE2B8EE27A58684006164F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE2B8ED27A58684006164F6 /* Assets.xcassets */; };
 		0CE2B8F127A58684006164F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE2B8EF27A58684006164F6 /* LaunchScreen.storyboard */; };
 		0CE2B8F927A58741006164F6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B8F827A58741006164F6 /* MainViewController.swift */; };
-		0CE2B90127A589A5006164F6 /* DevCredRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B90027A589A5006164F6 /* DevCredRootView.swift */; };
-		0CE2B90327A589BC006164F6 /* DevCredRootView.Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B90227A589BC006164F6 /* DevCredRootView.Controller.swift */; };
-		0CE2B90527A59519006164F6 /* DevCredConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B90427A59519006164F6 /* DevCredConfig.swift */; };
-		0CE2B90927A59DCD006164F6 /* DevCredDeveloperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B90827A59DCD006164F6 /* DevCredDeveloperCell.swift */; };
-		0CE2B90B27A5A029006164F6 /* DevCredRootView.DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B90A27A5A029006164F6 /* DevCredRootView.DataSource.swift */; };
-		0CE2B90D27A5A1C6006164F6 /* DevCredRootView.Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B90C27A5A1C6006164F6 /* DevCredRootView.Model.swift */; };
-		0CE2B91027A5A3B4006164F6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0CE2B90F27A5A3B4006164F6 /* Kingfisher */; };
-		0CE2B91227A5A92A006164F6 /* DevCredProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B91127A5A92A006164F6 /* DevCredProjectCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0C286CE527A8115D0029FF34 /* DevCredLinksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevCredLinksCell.swift; sourceTree = "<group>"; };
-		0C286CE727A83B580029FF34 /* DevCredConfig.Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevCredConfig.Remote.swift; sourceTree = "<group>"; };
-		0C286CEA27A83C790029FF34 /* Locale+CurrentLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+CurrentLanguage.swift"; sourceTree = "<group>"; };
-		0C286CEC27A83CA10029FF34 /* UITableView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeue.swift"; sourceTree = "<group>"; };
-		0C286CEE27A83E7F0029FF34 /* Decodable+LocalizedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+LocalizedValue.swift"; sourceTree = "<group>"; };
+		0C34834F27A854140077ACA5 /* devcred-ios */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "devcred-ios"; path = ..; sourceTree = "<group>"; };
 		0CE2B8E127A58683006164F6 /* devcred-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "devcred-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE2B8E427A58683006164F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE2B8ED27A58684006164F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CE2B8F027A58684006164F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CE2B8F227A58684006164F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CE2B8F827A58741006164F6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		0CE2B90027A589A5006164F6 /* DevCredRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevCredRootView.swift; sourceTree = "<group>"; };
-		0CE2B90227A589BC006164F6 /* DevCredRootView.Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevCredRootView.Controller.swift; sourceTree = "<group>"; };
-		0CE2B90427A59519006164F6 /* DevCredConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevCredConfig.swift; sourceTree = "<group>"; };
-		0CE2B90827A59DCD006164F6 /* DevCredDeveloperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevCredDeveloperCell.swift; sourceTree = "<group>"; };
-		0CE2B90A27A5A029006164F6 /* DevCredRootView.DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevCredRootView.DataSource.swift; sourceTree = "<group>"; };
-		0CE2B90C27A5A1C6006164F6 /* DevCredRootView.Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevCredRootView.Model.swift; sourceTree = "<group>"; };
-		0CE2B91127A5A92A006164F6 /* DevCredProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevCredProjectCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,28 +29,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CE2B91027A5A3B4006164F6 /* Kingfisher in Frameworks */,
+				0C34835227A8541E0077ACA5 /* DevCred in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C286CE927A83C670029FF34 /* Extensions */ = {
+		0C34834E27A854140077ACA5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				0C286CEA27A83C790029FF34 /* Locale+CurrentLanguage.swift */,
-				0C286CEC27A83CA10029FF34 /* UITableView+Dequeue.swift */,
-				0C286CEE27A83E7F0029FF34 /* Decodable+LocalizedValue.swift */,
+				0C34834F27A854140077ACA5 /* devcred-ios */,
 			);
-			path = Extensions;
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		0C34835027A8541E0077ACA5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		0CE2B8D827A58683006164F6 = {
 			isa = PBXGroup;
 			children = (
+				0C34834E27A854140077ACA5 /* Packages */,
 				0CE2B8E327A58683006164F6 /* devcred-example */,
 				0CE2B8E227A58683006164F6 /* Products */,
+				0C34835027A8541E0077ACA5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,45 +74,11 @@
 			children = (
 				0CE2B8E427A58683006164F6 /* AppDelegate.swift */,
 				0CE2B8F827A58741006164F6 /* MainViewController.swift */,
-				0CE2B8FA27A58938006164F6 /* DevCred */,
 				0CE2B8ED27A58684006164F6 /* Assets.xcassets */,
 				0CE2B8EF27A58684006164F6 /* LaunchScreen.storyboard */,
 				0CE2B8F227A58684006164F6 /* Info.plist */,
 			);
 			path = "devcred-example";
-			sourceTree = "<group>";
-		};
-		0CE2B8FA27A58938006164F6 /* DevCred */ = {
-			isa = PBXGroup;
-			children = (
-				0CE2B90427A59519006164F6 /* DevCredConfig.swift */,
-				0C286CE727A83B580029FF34 /* DevCredConfig.Remote.swift */,
-				0CE2B8FD27A58962006164F6 /* DevCredRootView */,
-				0CE2B90727A59DBC006164F6 /* TableViewCells */,
-				0C286CE927A83C670029FF34 /* Extensions */,
-			);
-			path = DevCred;
-			sourceTree = "<group>";
-		};
-		0CE2B8FD27A58962006164F6 /* DevCredRootView */ = {
-			isa = PBXGroup;
-			children = (
-				0CE2B90027A589A5006164F6 /* DevCredRootView.swift */,
-				0CE2B90227A589BC006164F6 /* DevCredRootView.Controller.swift */,
-				0CE2B90C27A5A1C6006164F6 /* DevCredRootView.Model.swift */,
-				0CE2B90A27A5A029006164F6 /* DevCredRootView.DataSource.swift */,
-			);
-			path = DevCredRootView;
-			sourceTree = "<group>";
-		};
-		0CE2B90727A59DBC006164F6 /* TableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				0CE2B90827A59DCD006164F6 /* DevCredDeveloperCell.swift */,
-				0C286CE527A8115D0029FF34 /* DevCredLinksCell.swift */,
-				0CE2B91127A5A92A006164F6 /* DevCredProjectCell.swift */,
-			);
-			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +98,7 @@
 			);
 			name = "devcred-example";
 			packageProductDependencies = (
-				0CE2B90F27A5A3B4006164F6 /* Kingfisher */,
+				0C34835127A8541E0077ACA5 /* DevCred */,
 			);
 			productName = "devcred-example";
 			productReference = 0CE2B8E127A58683006164F6 /* devcred-example.app */;
@@ -179,7 +129,6 @@
 			);
 			mainGroup = 0CE2B8D827A58683006164F6;
 			packageReferences = (
-				0CE2B90E27A5A3B4006164F6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 0CE2B8E227A58683006164F6 /* Products */;
 			projectDirPath = "";
@@ -207,20 +156,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CE2B90927A59DCD006164F6 /* DevCredDeveloperCell.swift in Sources */,
-				0CE2B90D27A5A1C6006164F6 /* DevCredRootView.Model.swift in Sources */,
 				0CE2B8E527A58683006164F6 /* AppDelegate.swift in Sources */,
 				0CE2B8F927A58741006164F6 /* MainViewController.swift in Sources */,
-				0CE2B90327A589BC006164F6 /* DevCredRootView.Controller.swift in Sources */,
-				0C286CEB27A83C790029FF34 /* Locale+CurrentLanguage.swift in Sources */,
-				0CE2B91227A5A92A006164F6 /* DevCredProjectCell.swift in Sources */,
-				0CE2B90127A589A5006164F6 /* DevCredRootView.swift in Sources */,
-				0C286CE827A83B580029FF34 /* DevCredConfig.Remote.swift in Sources */,
-				0C286CED27A83CA10029FF34 /* UITableView+Dequeue.swift in Sources */,
-				0C286CE627A8115D0029FF34 /* DevCredLinksCell.swift in Sources */,
-				0C286CEF27A83E7F0029FF34 /* Decodable+LocalizedValue.swift in Sources */,
-				0CE2B90B27A5A029006164F6 /* DevCredRootView.DataSource.swift in Sources */,
-				0CE2B90527A59519006164F6 /* DevCredConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +305,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -395,6 +333,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -431,22 +370,10 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		0CE2B90E27A5A3B4006164F6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		0CE2B90F27A5A3B4006164F6 /* Kingfisher */ = {
+		0C34835127A8541E0077ACA5 /* DevCred */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0CE2B90E27A5A3B4006164F6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
+			productName = DevCred;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Remote info
 
-struct DevCredRemoteInfo: Decodable {
+public struct DevCredRemoteInfo: Decodable {
   let title: String?
   let developer: DevCredDeveloperInfo?
   let projects: [DevCredProjectInfo]?
@@ -20,7 +20,7 @@ struct DevCredRemoteInfo: Decodable {
     case projects
   }
 
-  init(from decoder: Decoder) throws {
+  public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
 
     self.title = Self.getLocalizedValue(from: container, for: .title)
@@ -29,7 +29,7 @@ struct DevCredRemoteInfo: Decodable {
     self.projects = try container.decodeIfPresent([DevCredProjectInfo].self, forKey: .projects)
   }
 
-  init(title: String?, developer: DevCredDeveloperInfo?, projects: [DevCredProjectInfo]?) {
+  public init(title: String?, developer: DevCredDeveloperInfo?, projects: [DevCredProjectInfo]?) {
     self.title = title
     self.developer = developer
     self.projects = projects
@@ -38,7 +38,7 @@ struct DevCredRemoteInfo: Decodable {
 
 // MARK: - Developer info
 
-struct DevCredDeveloperInfo: Decodable, Hashable {
+public struct DevCredDeveloperInfo: Decodable, Hashable {
   let name: String
   let description: String?
   let imageUrl: String?
@@ -51,7 +51,7 @@ struct DevCredDeveloperInfo: Decodable, Hashable {
     case links
   }
 
-  init(from decoder: Decoder) throws {
+  public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
 
     self.name = Self.getLocalizedValue(from: container, for: .name) ?? "Unexpected name value"
@@ -61,7 +61,7 @@ struct DevCredDeveloperInfo: Decodable, Hashable {
     self.links = try container.decodeIfPresent([SocialLink].self, forKey: .links)
   }
 
-  init(name: String, description: String?, imageUrl: String?, links: [SocialLink]?) {
+  public init(name: String, description: String?, imageUrl: String?, links: [SocialLink]?) {
     self.name = name
     self.description = description
     self.imageUrl = imageUrl
@@ -69,12 +69,12 @@ struct DevCredDeveloperInfo: Decodable, Hashable {
   }
 }
 
-extension DevCredDeveloperInfo {
+public extension DevCredDeveloperInfo {
   struct SocialLink: Decodable, Hashable {
     let type: LinkType
     let value: String
 
-    enum LinkType: String {
+    public enum LinkType: String {
       case web
       case vk
       case dribbble
@@ -97,7 +97,7 @@ extension DevCredDeveloperInfo {
       case value
     }
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
       let container = try decoder.container(keyedBy: CodingKeys.self)
 
       if let typeValue = try? container.decode(String.self, forKey: .type) {
@@ -108,7 +108,7 @@ extension DevCredDeveloperInfo {
       self.value = try container.decode(String.self, forKey: .value)
     }
 
-    init(type: LinkType, value: String) {
+    public init(type: LinkType, value: String) {
       self.type = type
       self.value = value
     }
@@ -117,7 +117,7 @@ extension DevCredDeveloperInfo {
 
 // MARK: - Project info
 
-struct DevCredProjectInfo: Decodable, Hashable {
+public struct DevCredProjectInfo: Decodable, Hashable {
   let name: String
   let description: String?
   let iconUrl: String?
@@ -130,7 +130,7 @@ struct DevCredProjectInfo: Decodable, Hashable {
     case linkUrl = "link_url"
   }
 
-  init(from decoder: Decoder) throws {
+  public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
 
     self.name = Self.getLocalizedValue(from: container, for: .name) ?? "Unexpected name value"
@@ -140,7 +140,7 @@ struct DevCredProjectInfo: Decodable, Hashable {
     self.linkUrl = try container.decodeIfPresent(String.self, forKey: .linkUrl)
   }
 
-  init(name: String, description: String?, iconUrl: String?, linkUrl: String?) {
+  public init(name: String, description: String?, iconUrl: String?, linkUrl: String?) {
     self.name = name
     self.description = description
     self.iconUrl = iconUrl

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension DevCredRootView {
-  class Controller: UIViewController {
+  public class Controller: UIViewController {
     private let tableView: UITableView = {
       let tableView = UITableView(frame: .zero, style: .grouped)
       tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +39,7 @@ extension DevCredRootView {
       fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
       super.viewDidLoad()
 
       setupBackground()
@@ -50,7 +50,7 @@ extension DevCredRootView {
       }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
 
       setupNavigationBar()
@@ -124,23 +124,23 @@ extension DevCredRootView {
 }
 
 extension DevCredRootView.Controller: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+  public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return .leastNormalMagnitude
   }
 
-  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+  public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     return .leastNormalMagnitude
   }
 
-  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+  public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     return nil
   }
 
-  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+  public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
     return nil
   }
 
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
 
     guard let itemIdentifier = viewModel.dataSource?.itemIdentifier(for: indexPath) else { return }

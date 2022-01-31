@@ -7,6 +7,8 @@
 
 import UIKit
 
+import DevCred
+
 class MainViewController: UIViewController {
   private let textLabel: UILabel = {
     let label = UILabel()
