@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0C286CE627A8115D0029FF34 /* DevCredLinksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C286CE527A8115D0029FF34 /* DevCredLinksCell.swift */; };
+		0C286CE827A83B580029FF34 /* DevCredConfig.Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C286CE727A83B580029FF34 /* DevCredConfig.Remote.swift */; };
+		0C286CEB27A83C790029FF34 /* Locale+CurrentLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C286CEA27A83C790029FF34 /* Locale+CurrentLanguage.swift */; };
+		0C286CED27A83CA10029FF34 /* UITableView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C286CEC27A83CA10029FF34 /* UITableView+Dequeue.swift */; };
+		0C286CEF27A83E7F0029FF34 /* Decodable+LocalizedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C286CEE27A83E7F0029FF34 /* Decodable+LocalizedValue.swift */; };
 		0CE2B8E527A58683006164F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2B8E427A58683006164F6 /* AppDelegate.swift */; };
 		0CE2B8EE27A58684006164F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE2B8ED27A58684006164F6 /* Assets.xcassets */; };
 		0CE2B8F127A58684006164F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE2B8EF27A58684006164F6 /* LaunchScreen.storyboard */; };
@@ -24,6 +28,10 @@
 
 /* Begin PBXFileReference section */
 		0C286CE527A8115D0029FF34 /* DevCredLinksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevCredLinksCell.swift; sourceTree = "<group>"; };
+		0C286CE727A83B580029FF34 /* DevCredConfig.Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevCredConfig.Remote.swift; sourceTree = "<group>"; };
+		0C286CEA27A83C790029FF34 /* Locale+CurrentLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+CurrentLanguage.swift"; sourceTree = "<group>"; };
+		0C286CEC27A83CA10029FF34 /* UITableView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeue.swift"; sourceTree = "<group>"; };
+		0C286CEE27A83E7F0029FF34 /* Decodable+LocalizedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+LocalizedValue.swift"; sourceTree = "<group>"; };
 		0CE2B8E127A58683006164F6 /* devcred-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "devcred-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE2B8E427A58683006164F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE2B8ED27A58684006164F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +59,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C286CE927A83C670029FF34 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0C286CEA27A83C790029FF34 /* Locale+CurrentLanguage.swift */,
+				0C286CEC27A83CA10029FF34 /* UITableView+Dequeue.swift */,
+				0C286CEE27A83E7F0029FF34 /* Decodable+LocalizedValue.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0CE2B8D827A58683006164F6 = {
 			isa = PBXGroup;
 			children = (
@@ -84,8 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				0CE2B90427A59519006164F6 /* DevCredConfig.swift */,
+				0C286CE727A83B580029FF34 /* DevCredConfig.Remote.swift */,
 				0CE2B8FD27A58962006164F6 /* DevCredRootView */,
 				0CE2B90727A59DBC006164F6 /* TableViewCells */,
+				0C286CE927A83C670029FF34 /* Extensions */,
 			);
 			path = DevCred;
 			sourceTree = "<group>";
@@ -192,9 +212,13 @@
 				0CE2B8E527A58683006164F6 /* AppDelegate.swift in Sources */,
 				0CE2B8F927A58741006164F6 /* MainViewController.swift in Sources */,
 				0CE2B90327A589BC006164F6 /* DevCredRootView.Controller.swift in Sources */,
+				0C286CEB27A83C790029FF34 /* Locale+CurrentLanguage.swift in Sources */,
 				0CE2B91227A5A92A006164F6 /* DevCredProjectCell.swift in Sources */,
 				0CE2B90127A589A5006164F6 /* DevCredRootView.swift in Sources */,
+				0C286CE827A83B580029FF34 /* DevCredConfig.Remote.swift in Sources */,
+				0C286CED27A83CA10029FF34 /* UITableView+Dequeue.swift in Sources */,
 				0C286CE627A8115D0029FF34 /* DevCredLinksCell.swift in Sources */,
+				0C286CEF27A83E7F0029FF34 /* Decodable+LocalizedValue.swift in Sources */,
 				0CE2B90B27A5A029006164F6 /* DevCredRootView.DataSource.swift in Sources */,
 				0CE2B90527A59519006164F6 /* DevCredConfig.swift in Sources */,
 			);

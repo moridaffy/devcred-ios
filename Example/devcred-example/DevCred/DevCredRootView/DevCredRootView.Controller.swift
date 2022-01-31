@@ -16,9 +16,9 @@ extension DevCredRootView {
       tableView.separatorStyle = .none
       tableView.backgroundColor = .clear
 
-      tableView.register(DevCredDeveloperCell.self, forCellReuseIdentifier: String(describing: DevCredDeveloperCell.self))
-      tableView.register(DevCredLinksCell.self, forCellReuseIdentifier: String(describing: DevCredLinksCell.self))
-      tableView.register(DevCredProjectCell.self, forCellReuseIdentifier: String(describing: DevCredProjectCell.self))
+      tableView.registerCell(DevCredDeveloperCell.self)
+      tableView.registerCell(DevCredLinksCell.self)
+      tableView.registerCell(DevCredProjectCell.self)
 
       return tableView
     }()
