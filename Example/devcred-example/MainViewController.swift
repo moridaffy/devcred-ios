@@ -92,7 +92,7 @@ class MainViewController: UIViewController {
       ])
 
     let config = DevCredConfig(
-      infoSource: localSource,
+      infoSource: .remote(url: <#T##String#>),
       presentationType: .modal,
       background: .blurDark,
       accentColor: .red,
