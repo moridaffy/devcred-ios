@@ -61,10 +61,12 @@ class MainViewController: UIViewController {
 
   @objc private func credentialsButtonTapped() {
     let localSource: DevCredInfoSource = .local(
+      title: "Обо мне",
       developer: DevCredDeveloperInfo(
         name: "Maxim Skryabin",
         description: "iOS developer",
-        imageUrl: "https://mxm.codes/wp-content/uploads/2022/01/me.jpg"
+        imageUrl: "https://mxm.codes/wp-content/uploads/2022/01/me.jpg",
+        links: nil
       ),
       projects: [
         .init(name: "FoodRocket1", description: "FoodRocket – стартап, работающий на территории США, позволяющий пользователям заказывать доставку свежих продуктов, готовых блюд и предметов домашнего обихода", iconUrl: "https://mxm.codes/wp-content/uploads/2022/01/ios_foodrocket_icon-e1643113439817-300x300.png", linkUrl: nil),
@@ -74,11 +76,14 @@ class MainViewController: UIViewController {
 
     // https://www.npoint.io/docs/78727e638b2d4a5430cf
     // https://api.npoint.io/78727e638b2d4a5430cf
-    let remoteSource: DevCredInfoSource = .remote(url: "https://api.npoint.io/78727e638b2d4a5430cf")
+    let remoteSource: DevCredInfoSource = .remote(url: "https://mxm.codes/devcred.json")
 
     let config = DevCredConfig(
       infoSource: remoteSource,
-      presentationType: .modal
+      presentationType: .modal,
+      background: .blurDark,
+      accentColor: .red,
+      textColor: .white
     )
     DevCredRootView.present(config: config, from: self)
   }

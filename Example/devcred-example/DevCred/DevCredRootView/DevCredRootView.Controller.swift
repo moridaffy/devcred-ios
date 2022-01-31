@@ -17,6 +17,7 @@ extension DevCredRootView {
       tableView.backgroundColor = .clear
 
       tableView.register(DevCredDeveloperCell.self, forCellReuseIdentifier: String(describing: DevCredDeveloperCell.self))
+      tableView.register(DevCredLinksCell.self, forCellReuseIdentifier: String(describing: DevCredLinksCell.self))
       tableView.register(DevCredProjectCell.self, forCellReuseIdentifier: String(describing: DevCredProjectCell.self))
 
       return tableView
@@ -28,6 +29,8 @@ extension DevCredRootView {
       self.viewModel = viewModel
 
       super.init(nibName: nil, bundle: nil)
+
+      view.backgroundColor = .clear
 
       setupLayout()
     }
@@ -42,7 +45,9 @@ extension DevCredRootView {
       setupBackground()
       setupTableView()
 
-      viewModel.setupData()
+      viewModel.setupData { [weak self] title in
+        self?.title = title
+      }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -65,15 +70,28 @@ extension DevCredRootView {
     private func setupBackground() {
       switch viewModel.config.background {
       case .color(let color):
-        view.backgroundColor = color ?? .systemBackground
-      case .blur:
-        // TODO
-        break
+        tableView.backgroundColor = color ?? .systemBackground
+      case .blurLight:
+        tableView.backgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+      case .blurDark:
+        tableView.backgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
       }
     }
 
     private func setupNavigationBar() {
       navigationController?.navigationBar.tintColor = viewModel.config.accentColor
+      navigationController?.navigationBar.titleTextAttributes = [
+        .foregroundColor: viewModel.config.textColor
+      ]
+
+      switch viewModel.config.background {
+      case .blurLight:
+        navigationController?.overrideUserInterfaceStyle = .light
+      case .blurDark:
+        navigationController?.overrideUserInterfaceStyle = .dark
+      default:
+        break
+      }
 
       switch viewModel.config.presentationType {
       case.modal:
@@ -90,15 +108,51 @@ extension DevCredRootView {
     }
 
     private func setupTableView() {
-      let dataSource = getDataSource(for: tableView)
+      let dataSource = getDataSource(for: tableView, viewModel: viewModel)
       viewModel.dataSource = dataSource
 
+      tableView.tintColor = viewModel.config.accentColor
       tableView.contentInset = view.safeAreaInsets
       tableView.dataSource = viewModel.dataSource
+      tableView.delegate = self
     }
 
     @objc private func closeButtonTapped() {
       dismiss(animated: true, completion: nil)
+    }
+  }
+}
+
+extension DevCredRootView.Controller: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return .leastNormalMagnitude
+  }
+
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return .leastNormalMagnitude
+  }
+
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    return nil
+  }
+
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    return nil
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+
+    guard let itemIdentifier = viewModel.dataSource?.itemIdentifier(for: indexPath) else { return }
+
+    switch itemIdentifier {
+    case .project(let devCredProjectInfo):
+      guard let urlString = devCredProjectInfo.linkUrl,
+            let url = URL(string: urlString) else { return }
+
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    default:
+      return
     }
   }
 }

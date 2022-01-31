@@ -30,7 +30,7 @@ class DevCredDeveloperCell: UITableViewCell {
     label.textAlignment = .center
     label.textColor = .label
     label.numberOfLines = 0
-    label.font = .systemFont(ofSize: 18.0, weight: .semibold)
+    label.font = .systemFont(ofSize: 20.0, weight: .semibold)
     return label
   }()
 
@@ -59,10 +59,10 @@ class DevCredDeveloperCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func update(developer: DevCredDeveloperInfo) {
+  func update(developer: DevCredDeveloperInfo, textColor: UIColor) {
     if let imageUrlString = developer.imageUrl,
         let imageUrl = URL(string: imageUrlString) {
-      titleLabelTopConstraint?.constant = Config.developerImageViewHeight + 8.0
+      titleLabelTopConstraint?.constant = Config.developerImageViewHeight + 16.0
       developerImageView.isHidden = false
 
       developerImageView.kf.setImage(with: imageUrl, options: [.transition(.fade(0.3))])
@@ -72,7 +72,10 @@ class DevCredDeveloperCell: UITableViewCell {
     }
 
     titleLabel.text = developer.name
+    titleLabel.textColor = textColor
+
     subtitleLabel.text = developer.description
+    subtitleLabel.textColor = textColor.withAlphaComponent(0.5)
   }
 
   private func setupLayout() {
@@ -82,7 +85,7 @@ class DevCredDeveloperCell: UITableViewCell {
 
     let titleLabelTopConstraint = titleLabel.topAnchor.constraint(
       equalTo: developerImageView.topAnchor,
-      constant: Config.developerImageViewHeight + 8.0
+      constant: Config.developerImageViewHeight + 16.0
     )
     self.titleLabelTopConstraint = titleLabelTopConstraint
 
@@ -93,8 +96,8 @@ class DevCredDeveloperCell: UITableViewCell {
       developerImageView.widthAnchor.constraint(equalToConstant: Config.developerImageViewHeight),
 
       titleLabelTopConstraint,
-      titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16.0),
-      titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16.0),
+      titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 32.0),
+      titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -32.0),
 
       subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4.0),
       subtitleLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor),

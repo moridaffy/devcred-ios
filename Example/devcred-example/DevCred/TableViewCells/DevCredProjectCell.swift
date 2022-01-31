@@ -9,15 +9,8 @@ import UIKit
 
 class DevCredProjectCell: UITableViewCell {
   private enum Config {
-    static let projectImageViewHeight: CGFloat = 100.0
+    static let projectImageViewHeight: CGFloat = 80.0
   }
-
-  private let separatorView: UIView = {
-    let view = UIView()
-    view.translatesAutoresizingMaskIntoConstraints = false
-    view.backgroundColor = .systemGray6
-    return view
-  }()
 
   private let projectImageView: UIImageView = {
     let imageView = UIImageView()
@@ -41,7 +34,6 @@ class DevCredProjectCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-    selectionStyle = .none
     backgroundColor = .clear
 
     setupLayout()
@@ -51,7 +43,7 @@ class DevCredProjectCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func update(project: DevCredProjectInfo) {
+  func update(project: DevCredProjectInfo, textColor: UIColor) {
     if let imageUrlString = project.iconUrl,
         let imageUrl = URL(string: imageUrlString) {
       projectLabelLeftConstraint?.constant = Config.projectImageViewHeight + 16.0
@@ -67,7 +59,10 @@ class DevCredProjectCell: UITableViewCell {
     attributedText.append(
       NSAttributedString(
         string: project.name,
-        attributes: [.font: UIFont.systemFont(ofSize: 18.0, weight: .semibold)]
+        attributes: [
+          .font: UIFont.systemFont(ofSize: 20.0, weight: .semibold),
+          .foregroundColor: textColor
+        ]
       )
     )
     if let subtitle = project.description,
@@ -75,16 +70,27 @@ class DevCredProjectCell: UITableViewCell {
       attributedText.append(
         NSAttributedString(
           string: "\n" + subtitle,
-          attributes: [.font: UIFont.systemFont(ofSize: 14.0, weight: .regular)]
+          attributes: [
+            .font: UIFont.systemFont(ofSize: 14.0, weight: .regular),
+            .foregroundColor: textColor.withAlphaComponent(0.5)
+          ]
         )
       )
     }
 
     projectLabel.attributedText = attributedText
+
+    if let link = project.linkUrl,
+       !link.isEmpty {
+      accessoryType = .detailButton
+      selectionStyle = .default
+    } else {
+      accessoryType = .none
+      selectionStyle = .none
+    }
   }
 
   private func setupLayout() {
-    contentView.addSubview(separatorView)
     contentView.addSubview(projectImageView)
     contentView.addSubview(projectLabel)
 
@@ -95,18 +101,13 @@ class DevCredProjectCell: UITableViewCell {
     self.projectLabelLeftConstraint = projectLabelLeftConstraint
 
     contentView.addConstraints([
-      separatorView.topAnchor.constraint(equalTo: contentView.topAnchor),
-      separatorView.leftAnchor.constraint(equalTo: projectImageView.leftAnchor),
-      separatorView.rightAnchor.constraint(equalTo: projectLabel.rightAnchor),
-      separatorView.heightAnchor.constraint(equalToConstant: 1.0),
-
-      projectImageView.topAnchor.constraint(greaterThanOrEqualTo: separatorView.bottomAnchor, constant: 8.0),
+      projectImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16.0),
       projectImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16.0),
       projectImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
       projectImageView.heightAnchor.constraint(equalToConstant: Config.projectImageViewHeight),
       projectImageView.widthAnchor.constraint(equalToConstant: Config.projectImageViewHeight),
 
-      projectLabel.topAnchor.constraint(greaterThanOrEqualTo: separatorView.bottomAnchor, constant: 8.0),
+      projectLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16.0),
       projectLabelLeftConstraint,
       projectLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16.0),
       projectLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)

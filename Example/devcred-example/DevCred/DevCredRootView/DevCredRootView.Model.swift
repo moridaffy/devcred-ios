@@ -15,23 +15,28 @@ extension DevCredRootView {
     private var remoteDeveloper: DevCredDeveloperInfo?
     private var remoteProjects: [DevCredProjectInfo]?
 
+    var developer: DevCredDeveloperInfo? {
+      switch config.infoSource {
+      case .local(_, let developer, _):
+        return developer
+      case .remote:
+        return remoteDeveloper
+      }
+    }
+    var projects: [DevCredProjectInfo]? {
+      switch config.infoSource {
+      case .local(_, _, let projects):
+        return projects
+      case .remote:
+        return remoteProjects
+      }
+    }
+
     init(config: DevCredConfig) {
       self.config = config
     }
 
     private func updateDataSource() {
-      let developer: DevCredDeveloperInfo?
-      let projects: [DevCredProjectInfo]?
-
-      switch config.infoSource {
-      case .local(let localDeveloper, let localProjects):
-        developer = localDeveloper
-        projects = localProjects
-      case .remote:
-        developer = remoteDeveloper
-        projects = remoteProjects
-      }
-
       var snapshot = NSDiffableDataSourceSnapshot<Section, Cell>()
 
       if let developer = developer {
@@ -39,6 +44,12 @@ extension DevCredRootView {
         snapshot.appendItems([
           .developer(developer)
         ], toSection: .developer)
+
+        if let links = developer.links,
+           !links.isEmpty {
+          snapshot.appendSections([.links])
+          snapshot.appendItems([.links(links)], toSection: .links)
+        }
       }
 
       if let projects = projects,
@@ -50,9 +61,9 @@ extension DevCredRootView {
       dataSource?.apply(snapshot)
     }
 
-    private func fetchRemoteInfo(from url: String, completion: @escaping () -> Void) {
+    private func fetchRemoteInfo(from url: String, completion: @escaping (String?) -> Void) {
       guard let url = URL(string: url) else {
-        completion()
+        completion(nil)
         return
       }
 
@@ -62,22 +73,27 @@ extension DevCredRootView {
            let remoteInfo = try? JSONDecoder().decode(DevCredRemoteInfo.self, from: data) {
           self?.remoteDeveloper = remoteInfo.developer
           self?.remoteProjects = remoteInfo.projects
+
+          completion(remoteInfo.title)
         } else {
           print("Failed to load and/or decode remote info: \(error.debugDescription)")
+          completion(nil)
         }
-
-        completion()
       }
       dataTask.resume()
     }
 
-    func setupData() {
+    func setupData(completion: @escaping (String?) -> Void) {
       switch config.infoSource {
-      case .local:
+      case .local(let title, _, _):
         updateDataSource()
+        completion(title)
       case .remote(let urlString):
-        fetchRemoteInfo(from: urlString) {
-          self.updateDataSource()
+        fetchRemoteInfo(from: urlString) { title in
+          DispatchQueue.main.async {
+            completion(title)
+            self.updateDataSource()
+          }
         }
       }
     }
