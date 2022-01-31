@@ -33,7 +33,7 @@ https://github.com/moridaffy/devcred-ios
 ```
 
 Then just configure DevCred and call `present` function to display it:
-```
+```swift
 @objc private func creditsButtonTapped() {
   let localSource: DevCredInfoSource = .local(
       title: "Title to be displayed in navigation bar",
@@ -62,7 +62,7 @@ Then just configure DevCred and call `present` function to display it:
 
 ## Remote JSON
 DevCred can also be configured using remote JSON which allows you to always keep your project list up to date across all your apps without need for regularly uploading new app builds to App Store. Just pass remote `infoSource` to `DevCredConfig`'s initializer with URL, containing valid JSON (example can be found <a href="https://mxm.codes/devcred.json">here</a>)
-```
+```swift
 let config = DevCredConfig(
   infoSource: .remote(url: "https://developer.portfolio/path/to/json"),
   presentationType: .modal,
@@ -74,7 +74,7 @@ DevCredRootView.present(config: config, from: self)
 ```
 
 Remote source can also contain your project info in different languages. To do so pass a dictionary instead of just string to `name` field, for example:
-```
+```json
 {
   "developer": {
     "name": {
