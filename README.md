@@ -9,7 +9,7 @@
 <h4 align="center">Simple package for displaying credits to developer inside your app</h4>
 
 <h1 align="center">
-<img src="https://raw.githubusercontent.com/moridaffy/devcred-ios/master/Extra/screenshot_dark.png" width="250"> <img src="https://raw.githubusercontent.com/moridaffy/devcred-ios/master/Extra/screenshot_light.png" width="250">
+<img src="https://raw.githubusercontent.com/moridaffy/devcred-ios/master/screenshot_dark.png" width="250"> <img src="https://raw.githubusercontent.com/moridaffy/devcred-ios/master/screenshot_light.png" width="250">
 </h1>
 
 <p align="center">
