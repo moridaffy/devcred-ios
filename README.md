@@ -51,10 +51,11 @@ Then just configure DevCred and call `present` function to display it:
 
     let config = DevCredConfig(
       infoSource: localSource,
-      presentationType: .modal,
-      background: .blurDark,
-      accentColor: .red,
-      textColor: .white
+      excludedBundleId: "host_app_bundle_id",   // pass host app bundle ID to exclude it from projects list
+      presentationType: .modal,                 // present DevCred screen modally or by pushing into navigationController
+      background: .blurDark,                    // DevCred screen background style
+      accentColor: .red,                        // accent color used in DevCred screen for buttons, icons and etc
+      textColor: .white                         // text color used in DevCred screen
     )
     DevCredRootView.present(config: config, from: self)
 }
@@ -65,6 +66,7 @@ DevCred can also be configured using remote JSON which allows you to always keep
 ```swift
 let config = DevCredConfig(
   infoSource: .remote(url: "https://developer.portfolio/path/to/json"),
+  excludedBundleId: "host_app_bundle_id",
   presentationType: .modal,
   background: .blurDark,
   accentColor: .red,
@@ -91,7 +93,7 @@ This way DevCred gets device's language code (`Locale.current.languageCode`) and
 - [ ] Caching of remote `infoSource`
 - [ ] Get rid of `Kingfisher`
 - [ ] Add support for fallback local source if no internet connection is available and cache is missing
-- [ ] Option to exclude current app from project list
+- [X] Option to exclude current app from project list
 
 ## Developer
 This package was created by Maxim Skryabin as a simple way of showcasing my apps inside my other apps. I also decided to make it easy to use for other developers by opensourcing it. Feel free to contact me using <a href="https://mxm.codes/contact-en/">my website</a>.
