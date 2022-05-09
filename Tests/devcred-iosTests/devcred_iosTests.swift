@@ -1,5 +1,5 @@
 import XCTest
-@testable import devcred_ios
+@testable import DevCred
 
 final class devcred_iosTests: XCTestCase {
     func testExample() throws {

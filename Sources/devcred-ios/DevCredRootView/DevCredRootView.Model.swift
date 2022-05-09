@@ -72,7 +72,16 @@ extension DevCredRootView {
         if let data = data,
            let remoteInfo = try? JSONDecoder().decode(DevCredRemoteInfo.self, from: data) {
           self?.remoteDeveloper = remoteInfo.developer
-          self?.remoteProjects = remoteInfo.projects
+
+          if let excludedBundleId = self?.config.excludedBundleId {
+            self?.remoteProjects = remoteInfo.projects?.filter { project in
+              guard let bundleId = project.bundleId,
+                    !bundleId.isEmpty else { return true }
+              return bundleId != excludedBundleId
+            }
+          } else {
+            self?.remoteProjects = remoteInfo.projects
+          }
 
           completion(remoteInfo.title)
         } else {

@@ -126,12 +126,14 @@ public struct DevCredProjectInfo: Decodable, Hashable {
   let description: String?
   let iconUrl: String?
   let linkUrl: String?
+  let bundleId: String?
 
   enum CodingKeys: String, CodingKey {
     case name
     case description
     case iconUrl = "icon_url"
     case linkUrl = "link_url"
+    case bundleId = "bundle_id"
   }
 
   public init(from decoder: Decoder) throws {
@@ -142,12 +144,14 @@ public struct DevCredProjectInfo: Decodable, Hashable {
 
     self.iconUrl = try container.decodeIfPresent(String.self, forKey: .iconUrl)
     self.linkUrl = try container.decodeIfPresent(String.self, forKey: .linkUrl)
+    self.bundleId = try container.decodeIfPresent(String.self, forKey: .bundleId)
   }
 
-  public init(name: String, description: String?, iconUrl: String?, linkUrl: String?) {
+  public init(name: String, description: String?, iconUrl: String?, linkUrl: String?, bundleId: String? = nil) {
     self.name = name
     self.description = description
     self.iconUrl = iconUrl
     self.linkUrl = linkUrl
+    self.bundleId = bundleId
   }
 }

@@ -10,6 +10,7 @@ import UIKit
 public struct DevCredConfig {
   let infoSource: DevCredInfoSource
 
+  let excludedBundleId: String?
   let presentationType: PresentationType
   let background: BackgroundType
 
@@ -18,6 +19,7 @@ public struct DevCredConfig {
 
   public init(
     infoSource: DevCredInfoSource,
+    excludedBundleId: String? = nil,
     presentationType: PresentationType = .modal,
     background: BackgroundType = .color(nil),
     accentColor: UIColor = .systemBlue,
@@ -25,6 +27,7 @@ public struct DevCredConfig {
   ) {
     self.infoSource = infoSource
 
+    self.excludedBundleId = excludedBundleId
     self.presentationType = presentationType
     self.background = background
 
