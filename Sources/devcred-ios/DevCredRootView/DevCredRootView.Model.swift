@@ -61,32 +61,41 @@ extension DevCredRootView {
       dataSource?.apply(snapshot)
     }
 
-    private func fetchRemoteInfo(from url: String, completion: @escaping (String?) -> Void) {
+    private func fetchRemoteInfo(from url: String, fallback: DevCredRemoteInfo?, completion: @escaping (String?) -> Void) {
+      func onReceiveInfo(_ info: DevCredRemoteInfo?) {
+        guard let info = info else {
+          completion(nil)
+          return
+        }
+
+        remoteDeveloper = info.developer
+
+        if let excludedBundleId = config.excludedBundleId {
+          remoteProjects = info.projects?.filter { project in
+            guard let bundleId = project.bundleId,
+                  !bundleId.isEmpty else { return true }
+            return bundleId != excludedBundleId
+          }
+        } else {
+          remoteProjects = info.projects
+        }
+
+        completion(info.title)
+      }
+
       guard let url = URL(string: url) else {
-        completion(nil)
+        onReceiveInfo(fallback)
         return
       }
 
       let session = URLSession(configuration: .default)
-      let dataTask = session.dataTask(with: url) { [weak self] data, response, error in
+      let dataTask = session.dataTask(with: url) { data, response, error in
         if let data = data,
            let remoteInfo = try? JSONDecoder().decode(DevCredRemoteInfo.self, from: data) {
-          self?.remoteDeveloper = remoteInfo.developer
-
-          if let excludedBundleId = self?.config.excludedBundleId {
-            self?.remoteProjects = remoteInfo.projects?.filter { project in
-              guard let bundleId = project.bundleId,
-                    !bundleId.isEmpty else { return true }
-              return bundleId != excludedBundleId
-            }
-          } else {
-            self?.remoteProjects = remoteInfo.projects
-          }
-
-          completion(remoteInfo.title)
+          onReceiveInfo(remoteInfo)
         } else {
           print("Failed to load and/or decode remote info: \(error.debugDescription)")
-          completion(nil)
+          onReceiveInfo(fallback)
         }
       }
       dataTask.resume()
@@ -94,11 +103,11 @@ extension DevCredRootView {
 
     func setupData(completion: @escaping (String?) -> Void) {
       switch config.infoSource {
-      case .local(let title, _, _):
+      case let .local(title, _, _):
         updateDataSource()
         completion(title)
-      case .remote(let urlString):
-        fetchRemoteInfo(from: urlString) { title in
+      case let .remote(urlString, fallback):
+        fetchRemoteInfo(from: urlString, fallback: fallback) { title in
           DispatchQueue.main.async {
             completion(title)
             self.updateDataSource()

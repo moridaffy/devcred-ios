@@ -92,7 +92,7 @@ This way DevCred gets device's language code (`Locale.current.languageCode`) and
 ## TODO
 - [ ] Caching of remote `infoSource`
 - [ ] Get rid of `Kingfisher`
-- [ ] Add support for fallback local source if no internet connection is available and cache is missing
+- [X] Add support for fallback local source if no internet connection is available and cache is missing
 - [ ] Add support for presenting DevCred from SwiftUI view using `UIViewControllerRepresentable` wrapper
 - [X] Option to exclude current app from project list
 

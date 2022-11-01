@@ -38,7 +38,7 @@ public struct DevCredConfig {
 
 public enum DevCredInfoSource {
   case local(title: String?, developer: DevCredDeveloperInfo, projects: [DevCredProjectInfo])
-  case remote(url: String)
+  case remote(url: String, fallback: DevCredRemoteInfo?)
 }
 
 public extension DevCredConfig {

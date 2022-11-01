@@ -62,37 +62,45 @@ class MainViewController: UIViewController {
   }
 
   @objc private func credentialsButtonTapped() {
-    let localSource: DevCredInfoSource = .local(
-      title: "About me",
-      developer: DevCredDeveloperInfo(
-        name: "Maxim Skryabin",
-        description: "iOS developer",
-        imageUrl: "https://mxm.codes/wp-content/uploads/2022/01/me.jpg",
-        links: nil
+    let title = "About me"
+    let developer: DevCredDeveloperInfo = .init(
+      name: "Maxim Skryabin",
+      description: "iOS developer",
+      imageUrl: "https://mxm.codes/wp-content/uploads/2022/01/me.jpg",
+      links: nil
+    )
+    let projects: [DevCredProjectInfo] = [
+      .init(
+        name: "I Don't Smoke",
+        description: "I Don’t Smoke! is an application created specifically to help you get rid of a bad habit! Thanks to many counters and daily tips and motivators, this process will become even easier!",
+        iconUrl: "https://mxm.codes/wp-content/uploads/2022/01/ios_idontsmoke_icon-300x300.png",
+        linkUrl: "https://apps.apple.com/app/id1450987019"
       ),
-      projects: [
-        .init(
-          name: "I Don't Smoke",
-          description: "I Don’t Smoke! is an application created specifically to help you get rid of a bad habit! Thanks to many counters and daily tips and motivators, this process will become even easier!",
-          iconUrl: "https://mxm.codes/wp-content/uploads/2022/01/ios_idontsmoke_icon-300x300.png",
-          linkUrl: "https://apps.apple.com/app/id1450987019"
-        ),
-        .init(
-          name: "Seven",
-          description: "The game “Seven” is a unique alcohol game, thanks to which you can “rock” any party! If earlier you had to carry a deck of cards with you, now this game is always in your pocket :)",
-          iconUrl: "https://mxm.codes/wp-content/uploads/2022/01/icon_seven_icon-300x300.png",
-          linkUrl: "https://apps.apple.com/app/id1206995223"
-        ),
-        .init(
-          name: "Health+",
-          description: "Simple app for writing your workouts to Apple Health if using system app doesn’t fit your needs (for example, your workout type is not present in Apple’s app)",
-          iconUrl: "https://mxm.codes/wp-content/uploads/2022/01/ios_healthplus_icon-e1642241855397-300x300.png",
-          linkUrl: "https://apps.apple.com/app/id1480839127"
-        )
-      ])
+      .init(
+        name: "Seven",
+        description: "The game “Seven” is a unique alcohol game, thanks to which you can “rock” any party! If earlier you had to carry a deck of cards with you, now this game is always in your pocket :)",
+        iconUrl: "https://mxm.codes/wp-content/uploads/2022/01/icon_seven_icon-300x300.png",
+        linkUrl: "https://apps.apple.com/app/id1206995223"
+      ),
+      .init(
+        name: "Health+",
+        description: "Simple app for writing your workouts to Apple Health if using system app doesn’t fit your needs (for example, your workout type is not present in Apple’s app)",
+        iconUrl: "https://mxm.codes/wp-content/uploads/2022/01/ios_healthplus_icon-e1642241855397-300x300.png",
+        linkUrl: "https://apps.apple.com/app/id1480839127"
+      )
+    ]
+
+    let localSource: DevCredInfoSource = .local(
+      title: title,
+      developer: developer,
+      projects: projects
+    )
 
     let config = DevCredConfig(
-      infoSource: .remote(url: <#T##String#>),
+      infoSource: .remote(
+        url: "https://mxm.codes/devcred.json",
+        fallback: .init(title: title, developer: developer, projects: projects)
+      ),
       presentationType: .modal,
       background: .blurDark,
       accentColor: .red,
