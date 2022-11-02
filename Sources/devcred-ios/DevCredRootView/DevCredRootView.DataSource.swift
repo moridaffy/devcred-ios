@@ -23,7 +23,7 @@ extension DevCredRootView {
 
       case .project(let projectInfo):
         guard let cell = tableView.dequeueCell(DevCredProjectCell.self) else { return nil }
-        cell.update(project: projectInfo, textColor: viewModel.config.textColor)
+        cell.update(project: projectInfo, accentColor: viewModel.config.accentColor, textColor: viewModel.config.textColor)
         return cell
       }
     }

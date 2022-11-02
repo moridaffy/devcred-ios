@@ -12,6 +12,16 @@ class DevCredProjectCell: UITableViewCell {
     static let projectImageViewHeight: CGFloat = 80.0
   }
 
+  private let projectImageShadowView: UIView = {
+    let view = UIView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.backgroundColor = .clear
+    view.layer.shadowOpacity = 0.25
+    view.layer.shadowOffset = .zero
+    view.layer.shadowRadius = 5.0
+    return view
+  }()
+
   private let projectImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -43,16 +53,17 @@ class DevCredProjectCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func update(project: DevCredProjectInfo, textColor: UIColor) {
+  func update(project: DevCredProjectInfo, accentColor: UIColor, textColor: UIColor) {
     if let imageUrlString = project.iconUrl,
         let imageUrl = URL(string: imageUrlString) {
       projectLabelLeftConstraint?.constant = Config.projectImageViewHeight + 16.0
-      projectImageView.isHidden = false
+      projectImageShadowView.isHidden = false
+      projectImageShadowView.layer.shadowColor = accentColor.cgColor
 
       projectImageView.kf.setImage(with: imageUrl, options: [.transition(.fade(0.3))])
     } else {
       projectLabelLeftConstraint?.constant = 0.0
-      projectImageView.isHidden = true
+      projectImageShadowView.isHidden = true
     }
 
     let attributedText = NSMutableAttributedString()
@@ -91,21 +102,27 @@ class DevCredProjectCell: UITableViewCell {
   }
 
   private func setupLayout() {
-    contentView.addSubview(projectImageView)
+    contentView.addSubview(projectImageShadowView)
+    projectImageShadowView.addSubview(projectImageView)
     contentView.addSubview(projectLabel)
 
     let projectLabelLeftConstraint = projectLabel.leftAnchor.constraint(
-      equalTo: projectImageView.leftAnchor,
+      equalTo: projectImageShadowView.leftAnchor,
       constant: Config.projectImageViewHeight + 16.0
     )
     self.projectLabelLeftConstraint = projectLabelLeftConstraint
 
     contentView.addConstraints([
-      projectImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16.0),
-      projectImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16.0),
-      projectImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-      projectImageView.heightAnchor.constraint(equalToConstant: Config.projectImageViewHeight),
-      projectImageView.widthAnchor.constraint(equalToConstant: Config.projectImageViewHeight),
+      projectImageShadowView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16.0),
+      projectImageShadowView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16.0),
+      projectImageShadowView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+      projectImageShadowView.heightAnchor.constraint(equalToConstant: Config.projectImageViewHeight),
+      projectImageShadowView.widthAnchor.constraint(equalToConstant: Config.projectImageViewHeight),
+
+      projectImageView.topAnchor.constraint(equalTo: projectImageShadowView.topAnchor),
+      projectImageView.leftAnchor.constraint(equalTo: projectImageShadowView.leftAnchor),
+      projectImageView.rightAnchor.constraint(equalTo: projectImageShadowView.rightAnchor),
+      projectImageView.bottomAnchor.constraint(equalTo: projectImageShadowView.bottomAnchor),
 
       projectLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 16.0),
       projectLabelLeftConstraint,
