@@ -9,7 +9,7 @@ import UIKit
 
 extension DevCredRootView {
   static func getDataSource(for tableView: UITableView, viewModel: Model) -> UITableViewDiffableDataSource<Section, Cell> {
-    return UITableViewDiffableDataSource(tableView: tableView) { tableView, _, itemIdentifier in
+    let dataSource = UITableViewDiffableDataSource<Section, Cell>(tableView: tableView) { tableView, _, itemIdentifier in
       switch itemIdentifier {
       case .developer(let developerInfo):
         guard let cell = tableView.dequeueCell(DevCredDeveloperCell.self) else { return nil }
@@ -27,6 +27,10 @@ extension DevCredRootView {
         return cell
       }
     }
+
+    dataSource.defaultRowAnimation = .fade
+
+    return dataSource
   }
 }
 
